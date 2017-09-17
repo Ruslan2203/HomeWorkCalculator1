@@ -14,6 +14,7 @@ public class Main {
         Simbol second = new Simbol();
         double b = Double.parseDouble(second.simbol());
 
+
         MyOpFactory result = new MyOpFactory();
         Operation operation = result.getOpInstance(simbol);
         double c = operation.exec(a,b);
