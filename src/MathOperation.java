@@ -9,5 +9,10 @@ public enum MathOperation  {
         this.znak=znak;
     }
 
+    public String getZnak() {
+        return znak;
+    }
+
 }
+
 
