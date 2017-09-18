@@ -10,7 +10,7 @@ public class Main {
         double a = Double.parseDouble(reader.readLine());
 
         System.out.println("Please enter the mathematical operation");
-        System.out.println("If you want to find the greatest common divisor please enter % ");
+        System.out.println("If you want to find the Least common multiple please enter % ");
 
         String simbol = reader.readLine();
 

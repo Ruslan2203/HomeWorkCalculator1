@@ -16,7 +16,7 @@ public class MyOpFactory implements OperationFactory {
             OpMul operation = new OpMul();
             return operation;
         } else if (op.equals(MathOperation.GCD.getZnak())){
-            GreatestDivisor operation = new GreatestDivisor();
+            OpNok operation = new OpNok();
             return operation;
         }
 
