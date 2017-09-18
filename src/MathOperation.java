@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 public enum MathOperation  {
-    MINUS ("-") , PLUS ("+"), DIVISION("/"), MULTIPLYING("*");
+    MINUS ("-") , PLUS ("+"), DIVISION("/"), MULTIPLYING("*"), GCD("%");
 
     String znak;
 

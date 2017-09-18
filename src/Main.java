@@ -7,6 +7,7 @@ public class Main {
         double a = Double.parseDouble(first.simbol());
 
         System.out.println("Please enter the mathematical operation");
+        System.out.println("If you want to find the greatest common divisor please enter % ");
         Simbol sing = new Simbol();
         String simbol = sing.simbol();
 
