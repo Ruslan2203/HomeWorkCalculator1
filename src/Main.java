@@ -1,19 +1,21 @@
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         System.out.println("Please enter the first simbol");
-        Simbol first = new Simbol();
-        double a = Double.parseDouble(first.simbol());
+        double a = Double.parseDouble(reader.readLine());
 
         System.out.println("Please enter the mathematical operation");
         System.out.println("If you want to find the greatest common divisor please enter % ");
-        Simbol sing = new Simbol();
-        String simbol = sing.simbol();
+
+        String simbol = reader.readLine();
 
         System.out.println("Please enter the second simbol");
-        Simbol second = new Simbol();
-        double b = Double.parseDouble(second.simbol());
+        double b = Double.parseDouble(reader.readLine());
 
 
         MyOpFactory result = new MyOpFactory();
