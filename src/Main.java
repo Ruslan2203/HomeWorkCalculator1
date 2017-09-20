@@ -1,28 +1,56 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println("Please enter the first simbol");
-        double a = Double.parseDouble(reader.readLine());
+        ArrayList<String> list = new ArrayList<>();
 
-        System.out.println("Please enter the mathematical operation");
-        System.out.println("If you want to find the Least common multiple please enter % ");
+        try {
 
-        String simbol = reader.readLine();
+            BufferedReader reader = new BufferedReader(new FileReader("textexample.txt"));
 
-        System.out.println("Please enter the second simbol");
-        double b = Double.parseDouble(reader.readLine());
+            list.add(reader.readLine());
+
+            while (reader.readLine()!=null){
+                list.add(reader.readLine());
+            }
+
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter writer = new FileWriter("textexample.txt");
+
+            for (int i = 0;i<list.size();i++){
+                String text;
+
+                char [] charsList = list.get(i).toCharArray();
+                String znak = String.valueOf(charsList[1]);
+
+                double a = (double)charsList[0];
+                double b = (double)charsList[2];
+
+                MyOpFactory result = new MyOpFactory();
+                Operation operation = result.getOpInstance(znak);
+
+                double c = operation.exec(a,b);
+
+                text = a+" "+znak+" "+b+"="+c;
+                writer.append(text);
+
+            }
 
 
-        MyOpFactory result = new MyOpFactory();
-        Operation operation = result.getOpInstance(simbol);
-        double c = operation.exec(a,b);
-
-        System.out.println("Result = " + c);
+        }
+        catch (IOException e) {
+            System.out.println(e);
+        }
 
 
     }
