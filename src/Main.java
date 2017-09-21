@@ -8,15 +8,17 @@ public class Main {
 
         try {
 
-            BufferedReader reader = new BufferedReader(new FileReader("textexample.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("src/textexample.txt"));
+            String text =reader.readLine();
 
-            list.add(reader.readLine());
-
-            while (reader.readLine()!=null){
-                list.add(reader.readLine());
+            while (text!=null){
+                list.add(text);
+                text = reader.readLine();
             }
 
+         reader.close();
         }
+
         catch (FileNotFoundException e){
             e.printStackTrace();
         }
@@ -25,7 +27,12 @@ public class Main {
         }
 
         try {
-            FileWriter writer = new FileWriter("textexample.txt");
+            File file = new File("newFile");
+            FileWriter writer = new FileWriter(file);
+
+            if (!file.exists()){
+                file.createNewFile();
+            }
 
             for (int i = 0;i<list.size();i++){
                 String text;
@@ -33,19 +40,21 @@ public class Main {
                 char [] charsList = list.get(i).toCharArray();
                 String znak = String.valueOf(charsList[1]);
 
-                double a = (double)charsList[0];
-                double b = (double)charsList[2];
+                double a = (double) Character.getNumericValue(charsList[0]);
+                double b = (double) Character.getNumericValue(charsList[2]);
 
                 MyOpFactory result = new MyOpFactory();
                 Operation operation = result.getOpInstance(znak);
 
                 double c = operation.exec(a,b);
 
-                text = a+" "+znak+" "+b+"="+c;
+                text = "\n"+a+znak+b+"="+c;
+
                 writer.append(text);
 
             }
-
+            System.out.println();
+        writer.close();
 
         }
         catch (IOException e) {
