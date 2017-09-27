@@ -16,7 +16,7 @@ public class Main {
                 text = reader.readLine();
             }
 
-         reader.close();
+            reader.close();
         }
 
         catch (FileNotFoundException e){
@@ -38,23 +38,29 @@ public class Main {
                 String text;
 
                 char [] charsList = list.get(i).toCharArray();
-                String znak = String.valueOf(charsList[1]);
 
-                double a = (double) Character.getNumericValue(charsList[0]);
-                double b = (double) Character.getNumericValue(charsList[2]);
+                for (int j = 0; j<charsList.length;j++){
 
-                MyOpFactory result = new MyOpFactory();
-                Operation operation = result.getOpInstance(znak);
+                    if (charsList[j]=='-'||charsList[j]=='+'||charsList[j]=='/'||charsList[j]=='*'||charsList[j]=='%'){
+                        String number = list.get(i);
+                        String sim = String.valueOf(charsList[j]);
+                        double a =  Double.parseDouble(number.substring(0, j));
+                        double b =  Double.parseDouble(number.substring(j+1));
+                        MyOpFactory result = new MyOpFactory();
+                        Operation operation = result.getOpInstance(sim);
+                        double c = operation.exec(a,b);
+                        text = "\n"+a+sim+b+"="+c;
+                        writer.append(text);
 
-                double c = operation.exec(a,b);
 
-                text = "\n"+a+znak+b+"="+c;
+                    }
 
-                writer.append(text);
+                }
+
 
             }
-            System.out.println();
-        writer.close();
+
+            writer.close();
 
         }
         catch (IOException e) {
