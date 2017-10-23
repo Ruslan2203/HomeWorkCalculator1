@@ -1,3 +1,7 @@
+import operationFactory.MathOperation;
+import operation.Operation;
+import operationFactory.MyOpFactory;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -41,17 +45,56 @@ public class Main {
 
                 for (int j = 0; j<charsList.length;j++){
 
-                    if (charsList[j]=='-'||charsList[j]=='+'||charsList[j]=='/'||charsList[j]=='*'||charsList[j]=='%'){
-                        String number = list.get(i);
-                        String sim = String.valueOf(charsList[j]);
+                    String number = list.get(i);
+
+                    if (charsList[j]=='-'){
                         double a =  Double.parseDouble(number.substring(0, j));
                         double b =  Double.parseDouble(number.substring(j+1));
                         MyOpFactory result = new MyOpFactory();
-                        Operation operation = result.getOpInstance(sim);
+                        Operation operation = result.getOpInstance(MathOperation.MINUS);
                         double c = operation.exec(a,b);
-                        text = "\n"+a+sim+b+"="+c;
+                        text = "\n"+a+"-"+b+"="+c;
+                        writer.append(text);
+                    }
+                    else if (charsList[j]=='+'){
+                        double a =  Double.parseDouble(number.substring(0, j));
+                        double b =  Double.parseDouble(number.substring(j+1));
+                        MyOpFactory result = new MyOpFactory();
+                        Operation operation = result.getOpInstance(MathOperation.PLUS);
+                        double c = operation.exec(a,b);
+                        text = "\n"+a+"+"+b+"="+c;
                         writer.append(text);
 
+                    }
+                    else if (charsList[j]=='/'){
+                        double a =  Double.parseDouble(number.substring(0, j));
+                        double b =  Double.parseDouble(number.substring(j+1));
+                        MyOpFactory result = new MyOpFactory();
+                        Operation operation = result.getOpInstance(MathOperation.DIVISION);
+                        double c = operation.exec(a,b);
+                        text = "\n"+a+"/"+b+"="+c;
+                        writer.append(text);
+
+                    }
+                    else if (charsList[j]=='*'){
+                        double a =  Double.parseDouble(number.substring(0, j));
+                        double b =  Double.parseDouble(number.substring(j+1));
+                        MyOpFactory result = new MyOpFactory();
+                        Operation operation = result.getOpInstance(MathOperation.MULTIPLYING);
+                        double c = operation.exec(a,b);
+                        text = "\n"+a+"*"+b+"="+c;
+                        writer.append(text);
+
+                    }
+                    else if (charsList[j]=='%'){
+
+                        double a =  Double.parseDouble(number.substring(0, j));
+                        double b =  Double.parseDouble(number.substring(j+1));
+                        MyOpFactory result = new MyOpFactory();
+                        Operation operation = result.getOpInstance(MathOperation.GCD);
+                        double c = operation.exec(a,b);
+                        text = "\n"+a+"%"+b+"="+c;
+                        writer.append(text);
 
                     }
 
