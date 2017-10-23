@@ -1,6 +1,7 @@
 import operationFactory.MathOperation;
 import operation.Operation;
 import operationFactory.MyOpFactory;
+import singletonDataBase.StatisticsKeeper;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -25,9 +26,11 @@ public class Main {
 
         catch (FileNotFoundException e){
             e.printStackTrace();
+            StatisticsKeeper.getInstance().writer("Nok");
         }
         catch (IOException e){
             e.printStackTrace();
+            StatisticsKeeper.getInstance().writer("Nok");
         }
 
         try {
@@ -100,7 +103,7 @@ public class Main {
 
                 }
 
-
+                StatisticsKeeper.getInstance().writer("ok");
             }
 
             writer.close();
@@ -108,6 +111,7 @@ public class Main {
         }
         catch (IOException e) {
             System.out.println(e);
+            StatisticsKeeper.getInstance().writer("Nok");
         }
 
 

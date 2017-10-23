@@ -11,7 +11,9 @@ public enum MathOperation  {
         this.znak=znak;
     }
 
-
+    public  char  getZnak(){
+        return znak;
+    }
 }
 
 
